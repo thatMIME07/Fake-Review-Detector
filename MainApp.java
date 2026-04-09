@@ -1,3 +1,71 @@
+MIME
+thatmime
+but the Lord laughs at the wicked, for he knows their day is coming.
+
+You missed a call from 
+Fellow Buffalo
+ that lasted a few seconds. — 17:57
+MIME
+ started a call that lasted an hour. — 17:58
+Fellow Buffalo — 19:07
+https://github.com/thatMIME07/Fake-Review-Detector
+GitHub
+GitHub - thatMIME07/Fake-Review-Detector
+Contribute to thatMIME07/Fake-Review-Detector development by creating an account on GitHub.
+Contribute to thatMIME07/Fake-Review-Detector development by creating an account on GitHub.
+ALT
+import java.util.*;
+
+class Review {
+    String userId;
+    String productId;
+    int rating;
+
+MainApp.java
+7 KB
+MIME [SOS団],  — 19:11
+kardi repo update
+account bana kar send kardiyo
+You missed a call from 
+Fellow Buffalo
+ that lasted a few seconds. — 22:09
+Fellow Buffalo — 22:17
+sunn
+ye code bhi add krde repo mein
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+
+public class GUIApp extends JFrame {
+
+GUIApp.java
+6 KB
+MIME [SOS団],  — 22:26
+kardiya
+Fellow Buffalo — 22:31
+Attachment file type: acrobat
+JAVA phase 2 report.pdf
+425.89 KB
+isko replace krde purane main waale se
+import java.util.*;
+
+class Review {
+    String userId;
+    String productId;
+    int rating;
+
+MainApp.java
+7 KB
+﻿
+Fellow Buffalo
+vedanshmanwal
+ 
+ 
+Check this out
+My profile on Letterboxd 
+https://boxd.it/bAlIv
+My profile on Serializd
+https://srlzd.com/u/VedanshManwal
 import java.util.*;
 
 class Review {
@@ -32,7 +100,6 @@ class RuleAnalyzer {
         ArrayList<String> reasons = new ArrayList<>();
 
         String text = review.text.toLowerCase();
-
         boolean extreme = (review.rating == 1 || review.rating == 5);
 
         // 1. Short review
@@ -41,7 +108,7 @@ class RuleAnalyzer {
             reasons.add("Review is too short");
         }
 
-        // 2. Repeated review text
+        // 2. Repeated review text (avoid self-check)
         for (Review r : allReviews) {
             if (r != review && r.text.equalsIgnoreCase(review.text)) {
                 score += 30;
@@ -90,8 +157,8 @@ class RuleAnalyzer {
             reasons.add("Too many negative keywords");
         }
 
-        // Always give reason
-        if (reasons.size() == 0) {
+        // Always provide at least one reason
+        if (reasons.isEmpty()) {
             reasons.add("No suspicious patterns detected");
         }
 
@@ -115,23 +182,27 @@ public class MainApp {
 
     public static void main(String[] args) {
 
+        OUTER:
         while (true) {
-
             System.out.println("\n--- MENU ---");
             System.out.println("1. Add Review");
             System.out.println("2. Check Review");
             System.out.println("3. Search Keyword");
             System.out.println("4. Show All Reviews");
             System.out.println("5. Exit");
-
             int choice = sc.nextInt();
             sc.nextLine();
-
-            if (choice == 1) addReview();
-            else if (choice == 2) checkReview();
-            else if (choice == 3) searchKeyword();
-            else if (choice == 4) showAllReviews();
-            else if (choice == 5) break;
+            switch (choice) {
+                case 1 -> addReview();
+                case 2 -> checkReview();
+                case 3 -> searchKeyword();
+                case 4 -> showAllReviews();
+                case 5 -> {
+                    break OUTER;
+                }
+                default -> {
+                }
+            }
         }
     }
 
@@ -155,7 +226,7 @@ public class MainApp {
 
     static void checkReview() {
 
-        if (reviews.size() == 0) {
+        if (reviews.isEmpty()) {
             System.out.println("No reviews available.");
             return;
         }
@@ -211,7 +282,7 @@ public class MainApp {
 
     static void showAllReviews() {
 
-        if (reviews.size() == 0) {
+        if (reviews.isEmpty()) {
             System.out.println("No reviews available.");
             return;
         }
